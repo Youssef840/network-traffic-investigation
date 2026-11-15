@@ -7,7 +7,7 @@ A PCAP forensics tool that extracts DNS & TLS indicators, detects anomalies, and
 executive + tactical PDF report plus SIEM-ready IOC exports.
 
 [![CI](https://github.com/Youssef840/network-traffic-investigation/actions/workflows/ci.yml/badge.svg)](https://github.com/Youssef840/network-traffic-investigation/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/python-3.9%2B-blue?logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
 ![Scapy](https://img.shields.io/badge/scapy-2.5%2B-orange)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -51,7 +51,7 @@ Network-Traffic-Investigation/
 
 ## خطوات التشغيل (Setup & Run)
 
-**1. المتطلبات:** Python 3.9 أو أحدث.
+**1. المتطلبات:** Python 3.10 أو أحدث.
 
 **2. إنشاء بيئة افتراضية وتثبيت المكتبات**
 
