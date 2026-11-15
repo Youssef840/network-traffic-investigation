@@ -1,0 +1,4 @@
+# One IP address per line.
+# Populate from Feodo Tracker, ThreatFox, Spamhaus DROP, MISP, etc.
+# Entry below is a documentation-range (RFC 5737) demo indicator used by the sample PCAP.
+198.51.100.44

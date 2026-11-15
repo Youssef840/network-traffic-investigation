@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Generate sample PCAP
+        run: python tools/generate_sample_pcap.py -o samples/sample_incident.pcap
+      - name: Analyze it and build the report
+        run: python analyze.py samples/sample_incident.pcap -o ci-out --case-id CI-001 -q
+      - name: Check outputs
+        shell: bash
+        run: |
+          for f in CI-001_report.pdf CI-001_results.json CI-001_iocs.csv CI-001_findings.csv; do
+            test -s "ci-out/$f" || { echo "missing $f"; exit 1; }
+          done
+          python -c "import json; d=json.load(open('ci-out/CI-001_results.json')); assert d, 'empty results'"

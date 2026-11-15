@@ -1,0 +1,4 @@
+# Format: <ja3_md5_hash>,<label>
+# Populate from https://sslbl.abuse.ch/ja3-fingerprints/ (JA3 CSV) or your own threat intel.
+# Example:
+# 0123456789abcdef0123456789abcdef,Example malware family

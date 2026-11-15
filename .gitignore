@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+
+# Captures: generate the demo one with tools/generate_sample_pcap.py.
+# Never commit real captures, they can contain credentials and private traffic.
+*.pcap
+*.pcapng
+*.cap
+
+# Analysis output: only the committed DEMO-001 sample report is kept
+reports/*
+!reports/DEMO-001_*
+
+# Local config
+config.json
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,4 @@
+# One domain per line. Subdomains match automatically (evil.com matches a.b.evil.com).
+# Populate from your CTI feeds: abuse.ch URLhaus/ThreatFox, MISP, OpenCTI, vendor feeds...
+# Entries below are fictitious demo indicators used by tools/generate_sample_pcap.py
+update-check-svc.top

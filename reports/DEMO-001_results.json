@@ -1,0 +1,2050 @@
+{
+  "meta": {
+    "tool": "NTI v1.0.0",
+    "case_id": "DEMO-001",
+    "analyst": "SOC Team",
+    "tlp": "AMBER",
+    "generated": "2026-11-15 06:30 UTC",
+    "files": [
+      {
+        "name": "sample_incident.pcap",
+        "path": "C:\\Users\\Huawei\\Desktop\\Network-Traffic-Investigation\\samples\\sample_incident.pcap",
+        "size": 19591791,
+        "md5": "0ab8c69694a3ece145fd48bd158b5f74",
+        "sha256": "c1fc9a3bb473a35cf6cccbbc29756d76045f8c5f1089a484187d82f025f08dab"
+      }
+    ],
+    "internal_cidrs": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "127.0.0.0/8",
+      "169.254.0.0/16",
+      "100.64.0.0/10",
+      "fc00::/7",
+      "fe80::/10",
+      "::1/128"
+    ],
+    "intel": {
+      "domains": 1,
+      "ips": 1,
+      "ja3": 0
+    },
+    "thresholds": {
+      "dga_min_len": 10,
+      "dga_entropy": 3.5,
+      "dga_entropy_low_vowel": 3.1,
+      "dga_vowel_ratio": 0.22,
+      "long_qname": 60,
+      "long_label": 40,
+      "tunnel_unique_subdomains": 30,
+      "tunnel_avg_qname": 45,
+      "nxdomain_min": 15,
+      "nxdomain_ratio": 0.3,
+      "vscan_ports": 20,
+      "hscan_hosts": 20,
+      "synflood_syns": 500,
+      "synflood_ratio": 0.8,
+      "beacon_min_conns": 8,
+      "beacon_max_cv": 0.15,
+      "beacon_min_interval": 1.0,
+      "exfil_bytes": 5242880,
+      "exfil_ratio": 10.0,
+      "exfil_ratio_min_bytes": 1048576,
+      "icmp_payload_avg": 128,
+      "icmp_min_packets": 10
+    },
+    "analysis_seconds": 2.97
+  },
+  "stats": {
+    "packets": 16112,
+    "bytes": 19333975,
+    "start": 1794646804.890851,
+    "end": 1794647996.366207,
+    "duration": 1191.4753558635712,
+    "errors": 0
+  },
+  "findings": [
+    {
+      "severity": "Critical",
+      "category": "Threat Intel",
+      "title": "TLS sessions to blocklisted domain update-check-svc.top",
+      "description": "TLS ClientHello SNI matches the threat-intelligence blocklist.",
+      "mitre": "T1071 Application Layer Protocol",
+      "src": "10.10.20.23",
+      "dst": "203.0.113.66:443",
+      "indicators": [
+        {
+          "type": "domain",
+          "value": "update-check-svc.top"
+        },
+        {
+          "type": "ip",
+          "value": "203.0.113.66"
+        },
+        {
+          "type": "ja3",
+          "value": "7eb90f47c57829b1dc544107fb261295"
+        }
+      ],
+      "evidence": [
+        "18 session(s), 72.40 KB",
+        "JA3: 7eb90f47c57829b1dc544107fb261295"
+      ],
+      "count": 18,
+      "first_seen": 1794646831.0,
+      "last_seen": 1794647852.061613
+    },
+    {
+      "severity": "Critical",
+      "category": "Threat Intel",
+      "title": "DNS lookup of blocklisted domain update-check-svc.top",
+      "description": "An internal host resolved a domain present in the threat-intelligence blocklist.",
+      "mitre": "T1071 Application Layer Protocol",
+      "src": "10.10.20.23",
+      "dst": "",
+      "indicators": [
+        {
+          "type": "domain",
+          "value": "update-check-svc.top"
+        }
+      ],
+      "evidence": [
+        "1 queries from 10.10.20.23"
+      ],
+      "count": 1,
+      "first_seen": 1794646830.0,
+      "last_seen": 1794646830.0
+    },
+    {
+      "severity": "Critical",
+      "category": "Threat Intel",
+      "title": "Communication with blocklisted IP 198.51.100.44",
+      "description": "Traffic observed to/from an IP address listed in threat intelligence.",
+      "mitre": "T1071 Application Layer Protocol",
+      "src": "10.10.20.23",
+      "dst": "198.51.100.44",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "198.51.100.44"
+        }
+      ],
+      "evidence": [
+        "1 flow(s), 43.22 KB"
+      ],
+      "count": 1,
+      "first_seen": 1794647100.0,
+      "last_seen": 1794647100.151701
+    },
+    {
+      "severity": "High",
+      "category": "Recon - Port Scan",
+      "title": "Vertical port scan: 10.10.20.66 -> 10.10.20.5 (300 ports)",
+      "description": "One host probed many TCP ports on a single target in a short time.",
+      "mitre": "T1046 Network Service Discovery",
+      "src": "10.10.20.66",
+      "dst": "10.10.20.5",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "10.10.20.66"
+        }
+      ],
+      "evidence": [
+        "300 ports probed in 1s",
+        "open ports: 22, 80, 135, 139"
+      ],
+      "count": 300,
+      "first_seen": 1794647220.0,
+      "last_seen": 1794647221.195985
+    },
+    {
+      "severity": "High",
+      "category": "DNS - Tunneling",
+      "title": "Possible DNS tunneling via exfil-tunnel.xyz",
+      "description": "Large numbers of long, unique subdomains under a single domain indicate data encoded inside DNS queries (C2 or exfiltration over DNS).",
+      "mitre": "T1071.004 App Layer Protocol: DNS",
+      "src": "10.10.20.23",
+      "dst": "",
+      "indicators": [
+        {
+          "type": "domain",
+          "value": "exfil-tunnel.xyz"
+        }
+      ],
+      "evidence": [
+        "80 unique subdomains",
+        "avg query length 77 chars",
+        "80 TXT/NULL/ANY queries",
+        "longest label 52 chars",
+        "sample: 72re4nyy3wddjpnahzkxfbd6zd2dauflsv2hnvksexqamoykovxn.14.data.exfil-tunnel.xyz"
+      ],
+      "count": 80,
+      "first_seen": 1794647340.0,
+      "last_seen": 1794647411.1
+    },
+    {
+      "severity": "High",
+      "category": "DNS - DGA",
+      "title": "36 DGA-like domain(s) queried by 10.10.20.23",
+      "description": "High-entropy, random-looking domain names are typical of malware using Domain Generation Algorithms to locate its C2 infrastructure.",
+      "mitre": "T1568.002 Dynamic Resolution: DGA",
+      "src": "10.10.20.23",
+      "dst": "",
+      "indicators": [
+        {
+          "type": "domain",
+          "value": "adh3c9u695m7pf2gvk.net"
+        },
+        {
+          "type": "domain",
+          "value": "jualxmryk070zgbrs9.ru"
+        },
+        {
+          "type": "domain",
+          "value": "49lhgj13fey8miw9.ru"
+        },
+        {
+          "type": "domain",
+          "value": "kxbzef6ph3z50lmi.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "0f1rsfn5urz0om2yv8.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "fr8lnem1f20560i7be.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "si019752aqjtga4ad.biz"
+        },
+        {
+          "type": "domain",
+          "value": "gzc6yi3clcpwknb2si.net"
+        },
+        {
+          "type": "domain",
+          "value": "0tuigbeymgfdsn7.biz"
+        },
+        {
+          "type": "domain",
+          "value": "c8jp9z7mpo3wj5ey.biz"
+        },
+        {
+          "type": "domain",
+          "value": "hqa13j6vvy8sx6cu.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "mm7q4zldbjto5jvlg.biz"
+        },
+        {
+          "type": "domain",
+          "value": "oc3udhzinoab76d56a.biz"
+        },
+        {
+          "type": "domain",
+          "value": "zeo95ltrfaufeitisk.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "n1ktr9blaxtcpy.ru"
+        },
+        {
+          "type": "domain",
+          "value": "xe4chgz2cpviery.info"
+        },
+        {
+          "type": "domain",
+          "value": "w2f4hx02yu7ioky.net"
+        },
+        {
+          "type": "domain",
+          "value": "88ox943apsnuhrua.net"
+        },
+        {
+          "type": "domain",
+          "value": "bq31ve6xh4fdhwwq.net"
+        },
+        {
+          "type": "domain",
+          "value": "5w39rpd815tdhu9yy.ru"
+        },
+        {
+          "type": "domain",
+          "value": "ru4fkmb8gh9rq9qw4.info"
+        },
+        {
+          "type": "domain",
+          "value": "q9ikyce2kqtklhs6.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "wsw25v88wqtj9ojehh.ru"
+        },
+        {
+          "type": "domain",
+          "value": "y7eq5wx7kjhgi.biz"
+        },
+        {
+          "type": "domain",
+          "value": "9vh4l46l7jwuxb.info"
+        }
+      ],
+      "evidence": [
+        "adh3c9u695m7pf2gvk.net (entropy 4.06)",
+        "jualxmryk070zgbrs9.ru (entropy 3.95)",
+        "49lhgj13fey8miw9.ru (entropy 3.88)",
+        "kxbzef6ph3z50lmi.xyz (entropy 3.88)",
+        "0f1rsfn5urz0om2yv8.xyz (entropy 3.84)",
+        "fr8lnem1f20560i7be.xyz (entropy 3.84)",
+        "si019752aqjtga4ad.biz (entropy 3.81)",
+        "gzc6yi3clcpwknb2si.net (entropy 3.79)",
+        "34 of them returned NXDOMAIN"
+      ],
+      "count": 36,
+      "first_seen": 1794647000.0,
+      "last_seen": 1794647064.6
+    },
+    {
+      "severity": "High",
+      "category": "C2 - Beaconing",
+      "title": "Periodic beaconing 10.10.20.23 -> 203.0.113.66:443 every ~60.1s",
+      "description": "Connections at highly regular intervals are a hallmark of implants checking in with command-and-control servers.",
+      "mitre": "T1071.001 Web Protocols / T1573 Encrypted Channel",
+      "src": "10.10.20.23",
+      "dst": "203.0.113.66:443",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "203.0.113.66"
+        },
+        {
+          "type": "domain",
+          "value": "update-check-svc.top"
+        }
+      ],
+      "evidence": [
+        "18 connections",
+        "mean interval 60.06s, jitter (CV) 0.007",
+        "domain(s): update-check-svc.top",
+        "avg session size 4.02 KB"
+      ],
+      "count": 18,
+      "first_seen": 1794646831.0,
+      "last_seen": 1794647851.971382
+    },
+    {
+      "severity": "High",
+      "category": "ARP Spoofing",
+      "title": "IP 10.10.20.1 claimed by 2 MAC addresses",
+      "description": "Conflicting ARP replies indicate ARP cache poisoning (man-in-the-middle).",
+      "mitre": "T1557.002 ARP Cache Poisoning",
+      "src": "",
+      "dst": "10.10.20.1",
+      "indicators": [
+        {
+          "type": "mac",
+          "value": "00:0c:29:de:ad:99"
+        },
+        {
+          "type": "mac",
+          "value": "00:50:56:aa:00:01"
+        }
+      ],
+      "evidence": [
+        "MACs: 00:0c:29:de:ad:99, 00:50:56:aa:00:01",
+        "31 ARP replies"
+      ],
+      "count": 2,
+      "first_seen": null,
+      "last_seen": null
+    },
+    {
+      "severity": "High",
+      "category": "Cleartext Credentials",
+      "title": "FTP credentials sent in cleartext 10.10.20.15 -> 10.10.20.5",
+      "description": "Authentication data was transmitted without encryption and can be sniffed.",
+      "mitre": "T1040 Network Sniffing / T1552 Unsecured Credentials",
+      "src": "10.10.20.15",
+      "dst": "10.10.20.5:21",
+      "indicators": [],
+      "evidence": [
+        "USER backup_admin",
+        "PASS W*********!"
+      ],
+      "count": 2,
+      "first_seen": 1794646920.043826,
+      "last_seen": null
+    },
+    {
+      "severity": "High",
+      "category": "Exfiltration",
+      "title": "Large outbound transfer 10.10.20.23 -> 203.0.113.50",
+      "description": "Unusually high volume of data sent from an internal host to an external address.",
+      "mitre": "T1041 Exfiltration Over C2 Channel / T1048",
+      "src": "10.10.20.23",
+      "dst": "203.0.113.50",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "203.0.113.50"
+        }
+      ],
+      "evidence": [
+        "6.77 MB uploaded (threshold 5.00 MB)",
+        "ports [7443]",
+        "out/in ratio 195.5",
+        "duration 4s"
+      ],
+      "count": 1,
+      "first_seen": 1794647700.0,
+      "last_seen": 1794647704.076703
+    },
+    {
+      "severity": "High",
+      "category": "Suspicious Port",
+      "title": "Connection to 198.51.100.44:4444 (Metasploit default handler)",
+      "description": "Outbound connection to a port strongly associated with backdoors, RATs or C2.",
+      "mitre": "T1571 Non-Standard Port",
+      "src": "10.10.20.23",
+      "dst": "198.51.100.44:4444",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "198.51.100.44"
+        }
+      ],
+      "evidence": [
+        "43.22 KB, 41 packets",
+        "duration 0s"
+      ],
+      "count": 1,
+      "first_seen": 1794647100.0,
+      "last_seen": 1794647100.151701
+    },
+    {
+      "severity": "High",
+      "category": "HTTP - Suspicious Request",
+      "title": "GET files-cdn-dl.xyz/payloads/update.ps1",
+      "description": "Scripted user-agent and/or download of an executable/script over cleartext HTTP - common in malware staging.",
+      "mitre": "T1105 Ingress Tool Transfer",
+      "src": "10.10.20.23",
+      "dst": "198.51.100.20:80",
+      "indicators": [
+        {
+          "type": "url",
+          "value": "http://files-cdn-dl.xyz/payloads/update.ps1"
+        },
+        {
+          "type": "ip",
+          "value": "198.51.100.20"
+        },
+        {
+          "type": "user_agent",
+          "value": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.1"
+        }
+      ],
+      "evidence": [
+        "User-Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.1"
+      ],
+      "count": 1,
+      "first_seen": 1794647060.120476,
+      "last_seen": null
+    },
+    {
+      "severity": "Medium",
+      "category": "ICMP Tunneling",
+      "title": "Large ICMP payloads 10.10.20.23 -> 198.51.100.77",
+      "description": "ICMP echo packets carrying large payloads can be used to tunnel data.",
+      "mitre": "T1095 Non-Application Layer Protocol",
+      "src": "10.10.20.23",
+      "dst": "198.51.100.77",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "198.51.100.77"
+        }
+      ],
+      "evidence": [
+        "30 packets, avg payload 1000 B, max 1000 B"
+      ],
+      "count": 30,
+      "first_seen": null,
+      "last_seen": null
+    },
+    {
+      "severity": "Medium",
+      "category": "ICMP Tunneling",
+      "title": "Large ICMP payloads 198.51.100.77 -> 10.10.20.23",
+      "description": "ICMP echo packets carrying large payloads can be used to tunnel data.",
+      "mitre": "T1095 Non-Application Layer Protocol",
+      "src": "198.51.100.77",
+      "dst": "10.10.20.23",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "10.10.20.23"
+        }
+      ],
+      "evidence": [
+        "30 packets, avg payload 1000 B, max 1000 B"
+      ],
+      "count": 30,
+      "first_seen": null,
+      "last_seen": null
+    },
+    {
+      "severity": "Medium",
+      "category": "TLS - Non-standard Port",
+      "title": "TLS on non-standard port 203.0.113.50:7443",
+      "description": "Encrypted traffic on unusual ports is common for C2 and exfiltration channels.",
+      "mitre": "T1571 Non-Standard Port",
+      "src": "10.10.20.23",
+      "dst": "203.0.113.50:7443",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "203.0.113.50"
+        }
+      ],
+      "evidence": [
+        "SNI: none",
+        "6.81 MB transferred"
+      ],
+      "count": 1,
+      "first_seen": 1794647700.0,
+      "last_seen": 1794647704.076703
+    },
+    {
+      "severity": "Medium",
+      "category": "TLS - Missing SNI",
+      "title": "TLS sessions without SNI to 203.0.113.50",
+      "description": "Legitimate browsers always send SNI; direct-to-IP TLS is typical of malware and hard-coded C2 addresses.",
+      "mitre": "T1573.002 Encrypted Channel: Asymmetric Crypto",
+      "src": "10.10.20.23",
+      "dst": "203.0.113.50",
+      "indicators": [
+        {
+          "type": "ip",
+          "value": "203.0.113.50"
+        },
+        {
+          "type": "ja3",
+          "value": "cb93c3546cba97d0b377d99e2dd8e069"
+        }
+      ],
+      "evidence": [
+        "1 session(s), 6.81 MB"
+      ],
+      "count": 1,
+      "first_seen": 1794647700.0,
+      "last_seen": null
+    },
+    {
+      "severity": "Low",
+      "category": "DNS - Suspicious TLD",
+      "title": "6 domain(s) in high-abuse TLDs queried by 10.10.20.23",
+      "description": "TLDs such as .xyz/.top/.ru/.tk are disproportionately used for malicious infrastructure.",
+      "mitre": "T1071 Application Layer Protocol",
+      "src": "10.10.20.23",
+      "dst": "",
+      "indicators": [
+        {
+          "type": "domain",
+          "value": "bgpkg65fopk0e.ru"
+        },
+        {
+          "type": "domain",
+          "value": "bpixeg2b5awq.ru"
+        },
+        {
+          "type": "domain",
+          "value": "dssyqce4hf9qvp.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "eccdy81ajzth2h.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "files-cdn-dl.xyz"
+        },
+        {
+          "type": "domain",
+          "value": "y51jvjgy7v9r2j0.ru"
+        }
+      ],
+      "evidence": [
+        "bgpkg65fopk0e.ru (1 queries)",
+        "bpixeg2b5awq.ru (1 queries)",
+        "dssyqce4hf9qvp.xyz (1 queries)",
+        "eccdy81ajzth2h.xyz (1 queries)",
+        "files-cdn-dl.xyz (1 queries)",
+        "y51jvjgy7v9r2j0.ru (1 queries)"
+      ],
+      "count": 6,
+      "first_seen": 1794647006.8,
+      "last_seen": 1794647064.6
+    }
+  ],
+  "iocs": [
+    {
+      "type": "domain",
+      "value": "update-check-svc.top",
+      "severity": "Critical",
+      "categories": [
+        "C2 - Beaconing",
+        "Threat Intel"
+      ],
+      "hits": 37,
+      "first_seen": 1794646830.0,
+      "context": ""
+    },
+    {
+      "type": "ip",
+      "value": "198.51.100.44",
+      "severity": "Critical",
+      "categories": [
+        "Suspicious Port",
+        "Threat Intel"
+      ],
+      "hits": 2,
+      "first_seen": 1794647100.0,
+      "context": ""
+    },
+    {
+      "type": "ip",
+      "value": "203.0.113.66",
+      "severity": "Critical",
+      "categories": [
+        "C2 - Beaconing",
+        "Threat Intel"
+      ],
+      "hits": 36,
+      "first_seen": 1794646831.0,
+      "context": "update-check-svc.top"
+    },
+    {
+      "type": "ja3",
+      "value": "7eb90f47c57829b1dc544107fb261295",
+      "severity": "Critical",
+      "categories": [
+        "Threat Intel"
+      ],
+      "hits": 18,
+      "first_seen": 1794646831.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "0f1rsfn5urz0om2yv8.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "0tuigbeymgfdsn7.biz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "49lhgj13fey8miw9.ru",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "5w39rpd815tdhu9yy.ru",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "88ox943apsnuhrua.net",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "9vh4l46l7jwuxb.info",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "adh3c9u695m7pf2gvk.net",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "bq31ve6xh4fdhwwq.net",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "c8jp9z7mpo3wj5ey.biz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "exfil-tunnel.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - Tunneling"
+      ],
+      "hits": 80,
+      "first_seen": 1794647340.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "fr8lnem1f20560i7be.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "gzc6yi3clcpwknb2si.net",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "hqa13j6vvy8sx6cu.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "jualxmryk070zgbrs9.ru",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "kxbzef6ph3z50lmi.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "mm7q4zldbjto5jvlg.biz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "n1ktr9blaxtcpy.ru",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "oc3udhzinoab76d56a.biz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "q9ikyce2kqtklhs6.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "ru4fkmb8gh9rq9qw4.info",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "si019752aqjtga4ad.biz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "w2f4hx02yu7ioky.net",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "wsw25v88wqtj9ojehh.ru",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "xe4chgz2cpviery.info",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "y7eq5wx7kjhgi.biz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "zeo95ltrfaufeitisk.xyz",
+      "severity": "High",
+      "categories": [
+        "DNS - DGA"
+      ],
+      "hits": 36,
+      "first_seen": 1794647000.0,
+      "context": ""
+    },
+    {
+      "type": "ip",
+      "value": "10.10.20.66",
+      "severity": "High",
+      "categories": [
+        "Recon - Port Scan"
+      ],
+      "hits": 300,
+      "first_seen": 1794647220.0,
+      "context": ""
+    },
+    {
+      "type": "ip",
+      "value": "198.51.100.20",
+      "severity": "High",
+      "categories": [
+        "HTTP - Suspicious Request"
+      ],
+      "hits": 1,
+      "first_seen": 1794647060.120476,
+      "context": "files-cdn-dl.xyz"
+    },
+    {
+      "type": "ip",
+      "value": "203.0.113.50",
+      "severity": "High",
+      "categories": [
+        "Exfiltration",
+        "TLS - Missing SNI",
+        "TLS - Non-standard Port"
+      ],
+      "hits": 3,
+      "first_seen": 1794647700.0,
+      "context": ""
+    },
+    {
+      "type": "mac",
+      "value": "00:0c:29:de:ad:99",
+      "severity": "High",
+      "categories": [
+        "ARP Spoofing"
+      ],
+      "hits": 2,
+      "first_seen": null,
+      "context": ""
+    },
+    {
+      "type": "mac",
+      "value": "00:50:56:aa:00:01",
+      "severity": "High",
+      "categories": [
+        "ARP Spoofing"
+      ],
+      "hits": 2,
+      "first_seen": null,
+      "context": ""
+    },
+    {
+      "type": "url",
+      "value": "http://files-cdn-dl.xyz/payloads/update.ps1",
+      "severity": "High",
+      "categories": [
+        "HTTP - Suspicious Request"
+      ],
+      "hits": 1,
+      "first_seen": 1794647060.120476,
+      "context": ""
+    },
+    {
+      "type": "user_agent",
+      "value": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.1",
+      "severity": "High",
+      "categories": [
+        "HTTP - Suspicious Request"
+      ],
+      "hits": 1,
+      "first_seen": 1794647060.120476,
+      "context": ""
+    },
+    {
+      "type": "ip",
+      "value": "198.51.100.77",
+      "severity": "Medium",
+      "categories": [
+        "ICMP Tunneling"
+      ],
+      "hits": 30,
+      "first_seen": null,
+      "context": ""
+    },
+    {
+      "type": "ja3",
+      "value": "cb93c3546cba97d0b377d99e2dd8e069",
+      "severity": "Medium",
+      "categories": [
+        "TLS - Missing SNI"
+      ],
+      "hits": 1,
+      "first_seen": 1794647700.0,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "bgpkg65fopk0e.ru",
+      "severity": "Low",
+      "categories": [
+        "DNS - Suspicious TLD"
+      ],
+      "hits": 6,
+      "first_seen": 1794647006.8,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "bpixeg2b5awq.ru",
+      "severity": "Low",
+      "categories": [
+        "DNS - Suspicious TLD"
+      ],
+      "hits": 6,
+      "first_seen": 1794647006.8,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "dssyqce4hf9qvp.xyz",
+      "severity": "Low",
+      "categories": [
+        "DNS - Suspicious TLD"
+      ],
+      "hits": 6,
+      "first_seen": 1794647006.8,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "eccdy81ajzth2h.xyz",
+      "severity": "Low",
+      "categories": [
+        "DNS - Suspicious TLD"
+      ],
+      "hits": 6,
+      "first_seen": 1794647006.8,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "files-cdn-dl.xyz",
+      "severity": "Low",
+      "categories": [
+        "DNS - Suspicious TLD"
+      ],
+      "hits": 6,
+      "first_seen": 1794647006.8,
+      "context": ""
+    },
+    {
+      "type": "domain",
+      "value": "y51jvjgy7v9r2j0.ru",
+      "severity": "Low",
+      "categories": [
+        "DNS - Suspicious TLD"
+      ],
+      "hits": 6,
+      "first_seen": 1794647006.8,
+      "context": ""
+    }
+  ],
+  "risk": {
+    "score": 100,
+    "level": "Critical",
+    "by_severity": {
+      "Critical": 3,
+      "High": 9,
+      "Medium": 4,
+      "Low": 1,
+      "Info": 0
+    },
+    "by_category": {
+      "Threat Intel": 3,
+      "ICMP Tunneling": 2,
+      "Recon - Port Scan": 1,
+      "DNS - Tunneling": 1,
+      "DNS - DGA": 1,
+      "C2 - Beaconing": 1,
+      "ARP Spoofing": 1,
+      "Cleartext Credentials": 1,
+      "Exfiltration": 1,
+      "Suspicious Port": 1,
+      "HTTP - Suspicious Request": 1,
+      "TLS - Non-standard Port": 1,
+      "TLS - Missing SNI": 1,
+      "DNS - Suspicious TLD": 1
+    }
+  },
+  "dns": {
+    "total_queries": 206,
+    "total_responses": 206,
+    "unique_names": 128,
+    "unique_base_domains": 49,
+    "top_domains": [
+      [
+        "exfil-tunnel.xyz",
+        80
+      ],
+      [
+        "wikipedia.org",
+        16
+      ],
+      [
+        "github.com",
+        16
+      ],
+      [
+        "google.com",
+        14
+      ],
+      [
+        "jsdelivr.net",
+        13
+      ],
+      [
+        "microsoftonline.com",
+        13
+      ],
+      [
+        "office365.com",
+        12
+      ],
+      [
+        "update-check-svc.top",
+        1
+      ],
+      [
+        "gzc6yi3clcpwknb2si.net",
+        1
+      ],
+      [
+        "9vh4l46l7jwuxb.info",
+        1
+      ],
+      [
+        "mf1ufu96n3g2.net",
+        1
+      ],
+      [
+        "ec4alcqimca5s.info",
+        1
+      ],
+      [
+        "bgpkg65fopk0e.ru",
+        1
+      ],
+      [
+        "jualxmryk070zgbrs9.ru",
+        1
+      ],
+      [
+        "0tuigbeymgfdsn7.biz",
+        1
+      ]
+    ],
+    "qtypes": [
+      [
+        "A",
+        126
+      ],
+      [
+        "TXT",
+        80
+      ]
+    ],
+    "rcodes": [
+      [
+        "NOERROR",
+        168
+      ],
+      [
+        "NXDOMAIN",
+        38
+      ]
+    ],
+    "top_clients": [
+      [
+        "10.10.20.23",
+        146
+      ],
+      [
+        "10.10.20.15",
+        21
+      ],
+      [
+        "10.10.20.42",
+        21
+      ],
+      [
+        "10.10.20.31",
+        18
+      ]
+    ],
+    "resolvers": [
+      [
+        "10.10.20.53",
+        206
+      ]
+    ]
+  },
+  "tls": {
+    "sessions": 103,
+    "handshakes_parsed": 103,
+    "total_bytes": 19092975,
+    "servers": [
+      {
+        "ip": "203.0.113.50",
+        "sessions": 1,
+        "bytes_out": 7103453,
+        "bytes_in": 36342,
+        "ports": [
+          7443
+        ],
+        "sni": [],
+        "clients": [
+          "10.10.20.23"
+        ],
+        "ja3": [
+          "cb93c3546cba97d0b377d99e2dd8e069"
+        ],
+        "first": 1794647700.0,
+        "last": 1794647704.076703,
+        "total": 7139795,
+        "dns_names": []
+      },
+      {
+        "ip": "140.82.121.4",
+        "sessions": 16,
+        "bytes_out": 86511,
+        "bytes_in": 2304264,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "github.com"
+        ],
+        "clients": [
+          "10.10.20.15",
+          "10.10.20.23",
+          "10.10.20.31",
+          "10.10.20.42"
+        ],
+        "ja3": [
+          "7de1a433ca3b08310f449089c772fd46"
+        ],
+        "first": 1794646815.865222,
+        "last": 1794647816.902174,
+        "total": 2390775,
+        "dns_names": [
+          "github.com"
+        ]
+      },
+      {
+        "ip": "142.250.185.68",
+        "sessions": 14,
+        "bytes_out": 59490,
+        "bytes_in": 2190791,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "www.google.com"
+        ],
+        "clients": [
+          "10.10.20.15",
+          "10.10.20.23",
+          "10.10.20.31",
+          "10.10.20.42"
+        ],
+        "ja3": [
+          "7de1a433ca3b08310f449089c772fd46"
+        ],
+        "first": 1794647108.131864,
+        "last": 1794647980.54242,
+        "total": 2250281,
+        "dns_names": [
+          "www.google.com"
+        ]
+      },
+      {
+        "ip": "185.15.59.224",
+        "sessions": 16,
+        "bytes_out": 82295,
+        "bytes_in": 2149982,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "www.wikipedia.org"
+        ],
+        "clients": [
+          "10.10.20.15",
+          "10.10.20.23",
+          "10.10.20.31",
+          "10.10.20.42"
+        ],
+        "ja3": [
+          "7de1a433ca3b08310f449089c772fd46"
+        ],
+        "first": 1794646804.940851,
+        "last": 1794647907.275445,
+        "total": 2232277,
+        "dns_names": [
+          "www.wikipedia.org"
+        ]
+      },
+      {
+        "ip": "52.97.146.34",
+        "sessions": 12,
+        "bytes_out": 61033,
+        "bytes_in": 1680227,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "outlook.office365.com"
+        ],
+        "clients": [
+          "10.10.20.15",
+          "10.10.20.23",
+          "10.10.20.42"
+        ],
+        "ja3": [
+          "7de1a433ca3b08310f449089c772fd46"
+        ],
+        "first": 1794646850.726547,
+        "last": 1794647962.278659,
+        "total": 1741260,
+        "dns_names": [
+          "outlook.office365.com"
+        ]
+      },
+      {
+        "ip": "151.101.1.229",
+        "sessions": 13,
+        "bytes_out": 51763,
+        "bytes_in": 1620811,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "cdn.jsdelivr.net"
+        ],
+        "clients": [
+          "10.10.20.15",
+          "10.10.20.23",
+          "10.10.20.31",
+          "10.10.20.42"
+        ],
+        "ja3": [
+          "7de1a433ca3b08310f449089c772fd46"
+        ],
+        "first": 1794646805.696409,
+        "last": 1794647952.782799,
+        "total": 1672574,
+        "dns_names": [
+          "cdn.jsdelivr.net"
+        ]
+      },
+      {
+        "ip": "20.190.151.7",
+        "sessions": 13,
+        "bytes_out": 54724,
+        "bytes_in": 1537150,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "login.microsoftonline.com"
+        ],
+        "clients": [
+          "10.10.20.15",
+          "10.10.20.23",
+          "10.10.20.31",
+          "10.10.20.42"
+        ],
+        "ja3": [
+          "7de1a433ca3b08310f449089c772fd46"
+        ],
+        "first": 1794646992.715929,
+        "last": 1794647996.366207,
+        "total": 1591874,
+        "dns_names": [
+          "login.microsoftonline.com"
+        ]
+      },
+      {
+        "ip": "203.0.113.66",
+        "sessions": 18,
+        "bytes_out": 18162,
+        "bytes_in": 55977,
+        "ports": [
+          443
+        ],
+        "sni": [
+          "update-check-svc.top"
+        ],
+        "clients": [
+          "10.10.20.23"
+        ],
+        "ja3": [
+          "7eb90f47c57829b1dc544107fb261295"
+        ],
+        "first": 1794646831.0,
+        "last": 1794647852.061613,
+        "total": 74139,
+        "dns_names": [
+          "update-check-svc.top"
+        ]
+      }
+    ],
+    "clients": [
+      {
+        "ip": "10.10.20.23",
+        "sessions": 43,
+        "bytes_out": 7231915,
+        "bytes_in": 3332485,
+        "servers": 8,
+        "total": 10564400
+      },
+      {
+        "ip": "10.10.20.42",
+        "sessions": 21,
+        "bytes_out": 90537,
+        "bytes_in": 3049716,
+        "servers": 6,
+        "total": 3140253
+      },
+      {
+        "ip": "10.10.20.15",
+        "sessions": 21,
+        "bytes_out": 103531,
+        "bytes_in": 2759669,
+        "servers": 6,
+        "total": 2863200
+      },
+      {
+        "ip": "10.10.20.31",
+        "sessions": 18,
+        "bytes_out": 91448,
+        "bytes_in": 2433674,
+        "servers": 5,
+        "total": 2525122
+      }
+    ],
+    "ja3_top": [
+      [
+        "7de1a433ca3b08310f449089c772fd46",
+        84
+      ],
+      [
+        "7eb90f47c57829b1dc544107fb261295",
+        18
+      ],
+      [
+        "cb93c3546cba97d0b377d99e2dd8e069",
+        1
+      ]
+    ],
+    "versions": [
+      [
+        "TLS 1.3",
+        103
+      ]
+    ],
+    "unique_sni": 7
+  },
+  "traffic": {
+    "protocols": [
+      [
+        "TLS",
+        13113
+      ],
+      [
+        "TCP",
+        2496
+      ],
+      [
+        "DNS",
+        412
+      ],
+      [
+        "ICMP",
+        60
+      ],
+      [
+        "ARP",
+        31
+      ]
+    ],
+    "top_talkers": [
+      {
+        "ip": "10.10.20.23",
+        "bytes": 10759357,
+        "sent": 7292759,
+        "recv": 3466598,
+        "internal": true
+      },
+      {
+        "ip": "203.0.113.50",
+        "bytes": 7139795,
+        "sent": 36342,
+        "recv": 7103453,
+        "internal": false
+      },
+      {
+        "ip": "10.10.20.42",
+        "bytes": 3144177,
+        "sent": 92153,
+        "recv": 3052024,
+        "internal": true
+      },
+      {
+        "ip": "10.10.20.15",
+        "bytes": 2868092,
+        "sent": 105732,
+        "recv": 2762360,
+        "internal": true
+      },
+      {
+        "ip": "10.10.20.31",
+        "bytes": 2528431,
+        "sent": 92815,
+        "recv": 2435616,
+        "internal": true
+      },
+      {
+        "ip": "140.82.121.4",
+        "bytes": 2390775,
+        "sent": 2304264,
+        "recv": 86511,
+        "internal": false
+      },
+      {
+        "ip": "142.250.185.68",
+        "bytes": 2250281,
+        "sent": 2190791,
+        "recv": 59490,
+        "internal": false
+      },
+      {
+        "ip": "185.15.59.224",
+        "bytes": 2232277,
+        "sent": 2149982,
+        "recv": 82295,
+        "internal": false
+      },
+      {
+        "ip": "52.97.146.34",
+        "bytes": 1741260,
+        "sent": 1680227,
+        "recv": 61033,
+        "internal": false
+      },
+      {
+        "ip": "151.101.1.229",
+        "bytes": 1672574,
+        "sent": 1620811,
+        "recv": 51763,
+        "internal": false
+      },
+      {
+        "ip": "20.190.151.7",
+        "bytes": 1591874,
+        "sent": 1537150,
+        "recv": 54724,
+        "internal": false
+      },
+      {
+        "ip": "203.0.113.66",
+        "bytes": 74139,
+        "sent": 55977,
+        "recv": 18162,
+        "internal": false
+      },
+      {
+        "ip": "198.51.100.77",
+        "bytes": 62520,
+        "sent": 31260,
+        "recv": 31260,
+        "internal": false
+      },
+      {
+        "ip": "10.10.20.53",
+        "bytes": 51705,
+        "sent": 30976,
+        "recv": 20729,
+        "internal": true
+      },
+      {
+        "ip": "198.51.100.20",
+        "bytes": 47655,
+        "sent": 47003,
+        "recv": 652,
+        "internal": false
+      }
+    ],
+    "top_conversations": [
+      {
+        "client": "10.10.20.23",
+        "server": "203.0.113.50",
+        "proto": "TCP",
+        "port": 7443,
+        "bytes": 7139795
+      },
+      {
+        "client": "10.10.20.23",
+        "server": "185.15.59.224",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 1309106
+      },
+      {
+        "client": "10.10.20.42",
+        "server": "151.101.1.229",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 904410
+      },
+      {
+        "client": "10.10.20.31",
+        "server": "140.82.121.4",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 826875
+      },
+      {
+        "client": "10.10.20.15",
+        "server": "142.250.185.68",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 781578
+      },
+      {
+        "client": "10.10.20.15",
+        "server": "52.97.146.34",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 780257
+      },
+      {
+        "client": "10.10.20.23",
+        "server": "140.82.121.4",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 729861
+      },
+      {
+        "client": "10.10.20.42",
+        "server": "142.250.185.68",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 647437
+      },
+      {
+        "client": "10.10.20.42",
+        "server": "52.97.146.34",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 628812
+      },
+      {
+        "client": "10.10.20.31",
+        "server": "142.250.185.68",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 609617
+      },
+      {
+        "client": "10.10.20.42",
+        "server": "20.190.151.7",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 508335
+      },
+      {
+        "client": "10.10.20.23",
+        "server": "20.190.151.7",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 475600
+      },
+      {
+        "client": "10.10.20.15",
+        "server": "140.82.121.4",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 471414
+      },
+      {
+        "client": "10.10.20.31",
+        "server": "185.15.59.224",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 442321
+      },
+      {
+        "client": "10.10.20.31",
+        "server": "151.101.1.229",
+        "proto": "TCP",
+        "port": 443,
+        "bytes": 407367
+      }
+    ],
+    "top_services": [
+      [
+        "UDP/53",
+        206
+      ],
+      [
+        "TCP/443",
+        102
+      ],
+      [
+        "TCP/21",
+        3
+      ],
+      [
+        "TCP/80",
+        2
+      ],
+      [
+        "TCP/4444",
+        1
+      ],
+      [
+        "TCP/1",
+        1
+      ],
+      [
+        "TCP/2",
+        1
+      ],
+      [
+        "TCP/3",
+        1
+      ],
+      [
+        "TCP/4",
+        1
+      ],
+      [
+        "TCP/5",
+        1
+      ],
+      [
+        "TCP/6",
+        1
+      ],
+      [
+        "TCP/7",
+        1
+      ],
+      [
+        "TCP/8",
+        1
+      ],
+      [
+        "TCP/9",
+        1
+      ],
+      [
+        "TCP/10",
+        1
+      ]
+    ],
+    "unique_ips": 18,
+    "internal_hosts": 7,
+    "external_hosts": 11,
+    "flows": 613,
+    "http_requests": 1,
+    "timeline": [
+      [
+        1794646804,
+        460
+      ],
+      [
+        1794646824,
+        12
+      ],
+      [
+        1794646844,
+        137
+      ],
+      [
+        1794646864,
+        10
+      ],
+      [
+        1794646884,
+        144
+      ],
+      [
+        1794646904,
+        218
+      ],
+      [
+        1794646924,
+        0
+      ],
+      [
+        1794646944,
+        174
+      ],
+      [
+        1794646964,
+        143
+      ],
+      [
+        1794646984,
+        426
+      ],
+      [
+        1794647004,
+        136
+      ],
+      [
+        1794647024,
+        220
+      ],
+      [
+        1794647044,
+        148
+      ],
+      [
+        1794647064,
+        113
+      ],
+      [
+        1794647084,
+        110
+      ],
+      [
+        1794647104,
+        270
+      ],
+      [
+        1794647124,
+        10
+      ],
+      [
+        1794647144,
+        354
+      ],
+      [
+        1794647164,
+        0
+      ],
+      [
+        1794647184,
+        269
+      ],
+      [
+        1794647204,
+        776
+      ],
+      [
+        1794647224,
+        350
+      ],
+      [
+        1794647244,
+        120
+      ],
+      [
+        1794647264,
+        151
+      ],
+      [
+        1794647284,
+        210
+      ],
+      [
+        1794647304,
+        100
+      ],
+      [
+        1794647324,
+        10
+      ],
+      [
+        1794647344,
+        394
+      ],
+      [
+        1794647364,
+        54
+      ],
+      [
+        1794647384,
+        165
+      ],
+      [
+        1794647404,
+        113
+      ],
+      [
+        1794647424,
+        361
+      ],
+      [
+        1794647444,
+        212
+      ],
+      [
+        1794647464,
+        0
+      ],
+      [
+        1794647484,
+        14
+      ],
+      [
+        1794647504,
+        390
+      ],
+      [
+        1794647524,
+        189
+      ],
+      [
+        1794647544,
+        216
+      ],
+      [
+        1794647564,
+        72
+      ],
+      [
+        1794647584,
+        270
+      ],
+      [
+        1794647604,
+        157
+      ],
+      [
+        1794647624,
+        46
+      ],
+      [
+        1794647644,
+        166
+      ],
+      [
+        1794647664,
+        191
+      ],
+      [
+        1794647684,
+        5636
+      ],
+      [
+        1794647704,
+        193
+      ],
+      [
+        1794647724,
+        333
+      ],
+      [
+        1794647744,
+        0
+      ],
+      [
+        1794647764,
+        36
+      ],
+      [
+        1794647784,
+        181
+      ],
+      [
+        1794647804,
+        459
+      ],
+      [
+        1794647824,
+        0
+      ],
+      [
+        1794647844,
+        10
+      ],
+      [
+        1794647864,
+        162
+      ],
+      [
+        1794647884,
+        383
+      ],
+      [
+        1794647904,
+        42
+      ],
+      [
+        1794647924,
+        274
+      ],
+      [
+        1794647944,
+        147
+      ],
+      [
+        1794647964,
+        135
+      ],
+      [
+        1794647984,
+        40
+      ]
+    ],
+    "bucket_seconds": 20
+  }
+}

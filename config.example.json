@@ -1,0 +1,9 @@
+{
+  "dga_entropy": 3.5,
+  "tunnel_unique_subdomains": 30,
+  "vscan_ports": 20,
+  "beacon_min_conns": 8,
+  "beacon_max_cv": 0.15,
+  "exfil_bytes": 5242880,
+  "icmp_payload_avg": 128
+}
