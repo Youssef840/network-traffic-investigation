@@ -13,13 +13,12 @@ from __future__ import annotations
 
 import argparse
 import base64
+import logging
 import os
 import random
 import string
 import struct
 from datetime import datetime, timezone
-
-import logging
 
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import ARP, DNS, DNSQR, DNSRR, ICMP, IP, TCP, UDP, Ether, Raw, wrpcap  # noqa: E402

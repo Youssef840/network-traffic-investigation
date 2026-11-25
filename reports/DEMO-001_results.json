@@ -1,10 +1,10 @@
 {
   "meta": {
-    "tool": "NTI v1.0.0",
+    "tool": "NTI v1.1.0",
     "case_id": "DEMO-001",
     "analyst": "SOC Team",
     "tlp": "AMBER",
-    "generated": "2026-11-15 06:30 UTC",
+    "generated": "2026-11-25 16:08 UTC",
     "files": [
       {
         "name": "sample_incident.pcap",
@@ -54,7 +54,7 @@
       "icmp_payload_avg": 128,
       "icmp_min_packets": 10
     },
-    "analysis_seconds": 2.97
+    "analysis_seconds": 2.69
   },
   "stats": {
     "packets": 16112,
@@ -178,7 +178,7 @@
         "avg query length 77 chars",
         "80 TXT/NULL/ANY queries",
         "longest label 52 chars",
-        "sample: 72re4nyy3wddjpnahzkxfbd6zd2dauflsv2hnvksexqamoykovxn.14.data.exfil-tunnel.xyz"
+        "sample: w4toh7535jt6dtdjigdy2a74gmh3a47jewmyc5igg447nqzn3nn4.57.data.exfil-tunnel.xyz"
       ],
       "count": 80,
       "first_seen": 1794647340.0,

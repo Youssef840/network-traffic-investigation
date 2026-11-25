@@ -8,30 +8,59 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  smoke:
-    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check .
+
+  test:
+    name: test / ${{ matrix.os }} / py${{ matrix.python }}
+    needs: lint
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python: ["3.10", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Generate sample PCAP
-        run: python tools/generate_sample_pcap.py -o samples/sample_incident.pcap
-      - name: Analyze it and build the report
-        run: python analyze.py samples/sample_incident.pcap -o ci-out --case-id CI-001 -q
-      - name: Check outputs
+          cache: pip
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Tests + coverage
+        run: pytest --cov --cov-report=term --cov-report=xml
+      - name: CLI smoke run (installed `nti` command)
         shell: bash
         run: |
-          for f in CI-001_report.pdf CI-001_results.json CI-001_iocs.csv CI-001_findings.csv; do
-            test -s "ci-out/$f" || { echo "missing $f"; exit 1; }
+          python tools/generate_sample_pcap.py -o samples/sample_incident.pcap
+          nti samples/sample_incident.pcap -o ci-out --case-id CI-001 -q
+          for f in report.pdf report.html stix.json results.json iocs.csv findings.csv; do
+            test -s "ci-out/CI-001_$f" || { echo "missing $f"; exit 1; }
           done
-          python -c "import json; d=json.load(open('ci-out/CI-001_results.json')); assert d, 'empty results'"
+      - name: Upload sample report
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-report
+          path: ci-out/
+
+  docker:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t nti .
+      - run: docker run --rm nti --version

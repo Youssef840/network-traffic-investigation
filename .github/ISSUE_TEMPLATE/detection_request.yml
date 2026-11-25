@@ -1,0 +1,24 @@
+name: Detection request
+description: Propose a new detector or improve an existing one
+labels: [detection, enhancement]
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Malicious behaviour to detect
+      description: What does it look like on the wire? (protocol, ports, timing, sizes)
+    validations:
+      required: true
+  - type: input
+    id: mitre
+    attributes:
+      label: MITRE ATT&CK technique
+      placeholder: "T1071.001"
+  - type: textarea
+    id: fp
+    attributes:
+      label: Expected false positives
+  - type: textarea
+    id: refs
+    attributes:
+      label: References (reports, sample hashes, blog posts)

@@ -7,10 +7,17 @@ from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass, field
 
 from .collector import TrafficCollector
-from .config import (ALLOWLIST_DOMAINS, MITRE, STANDARD_TLS_PORTS, SUSPICIOUS_PORTS,
-                     SUSPICIOUS_TLDS, SUSPICIOUS_USER_AGENTS, ThreatIntel, Thresholds)
-from .utils import (NetScope, base_domain, fmt_duration, human_bytes, shannon_entropy,
-                    sld_label, tld)
+from .config import (
+    ALLOWLIST_DOMAINS,
+    MITRE,
+    STANDARD_TLS_PORTS,
+    SUSPICIOUS_PORTS,
+    SUSPICIOUS_TLDS,
+    SUSPICIOUS_USER_AGENTS,
+    ThreatIntel,
+    Thresholds,
+)
+from .utils import NetScope, base_domain, fmt_duration, human_bytes, shannon_entropy, sld_label, tld
 
 SEVERITY_ORDER = {"Critical": 4, "High": 3, "Medium": 2, "Low": 1, "Info": 0}
 SEVERITY_WEIGHT = {"Critical": 25, "High": 12, "Medium": 6, "Low": 2, "Info": 0}
@@ -140,7 +147,7 @@ class Analyzer:
                 continue
             subs = {q["qname"] for q in qs}
             avg_len = statistics.mean(len(q["qname"]) for q in qs)
-            max_label = max(max(len(l) for l in q["qname"].split(".")) for q in qs)
+            max_label = max(max(len(lbl) for lbl in q["qname"].split(".")) for q in qs)
             txt_null = sum(1 for q in qs if q["qtype"] in ("TXT", "NULL", "ANY"))
             reasons = []
             if len(subs) >= th.tunnel_unique_subdomains:
@@ -355,7 +362,7 @@ class Analyzer:
             if len(flows) < th.beacon_min_conns:
                 continue
             ts = sorted(f.first for f in flows)
-            gaps = [b - a for a, b in zip(ts, ts[1:]) if b - a > 0]
+            gaps = [b - a for a, b in zip(ts, ts[1:], strict=False) if b - a > 0]
             if len(gaps) < th.beacon_min_conns - 1:
                 continue
             mean = statistics.mean(gaps)

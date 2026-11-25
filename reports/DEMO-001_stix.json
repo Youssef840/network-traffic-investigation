@@ -1,0 +1,961 @@
+{
+  "type": "bundle",
+  "id": "bundle--54753cd4-849f-596c-9868-1014a3c6efb7",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "name": "SOC Team",
+      "identity_class": "individual"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--fea89183-d042-5618-b77e-e549fa2a2096",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN update-check-svc.top",
+      "description": "C2 - Beaconing, Threat Intel - 37 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'update-check-svc.top']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:00:30.000Z",
+      "confidence": 90,
+      "labels": [
+        "critical",
+        "c2 - beaconing",
+        "threat intel"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3f1ae25c-04e7-57db-9bc3-fb817db9f30e",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "IP 198.51.100.44",
+      "description": "Suspicious Port, Threat Intel - 2 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.51.100.44']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:05:00.000Z",
+      "confidence": 90,
+      "labels": [
+        "critical",
+        "suspicious port",
+        "threat intel"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0f8f0845-6581-50c3-8d11-093ea8cab830",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "IP 203.0.113.66",
+      "description": "C2 - Beaconing, Threat Intel - 36 hit(s). update-check-svc.top",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '203.0.113.66']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:00:31.000Z",
+      "confidence": 90,
+      "labels": [
+        "critical",
+        "c2 - beaconing",
+        "threat intel"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7bd67257-4bfd-5079-9427-b4a83044d3f2",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "JA3 7eb90f47c57829b1dc544107fb261295",
+      "description": "Threat Intel - 18 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[network-traffic:extensions.'tls-ext'.ja3 = '7eb90f47c57829b1dc544107fb261295']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:00:31.000Z",
+      "confidence": 90,
+      "labels": [
+        "critical",
+        "threat intel"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--89f5fb7b-0916-519b-b8f3-7c7e47446c2b",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN 0f1rsfn5urz0om2yv8.xyz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = '0f1rsfn5urz0om2yv8.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6cf602c0-46d3-519e-8b37-19dbbba30aca",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN 0tuigbeymgfdsn7.biz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = '0tuigbeymgfdsn7.biz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--407b66e5-1f6c-580a-b379-52accbbaf94a",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN 49lhgj13fey8miw9.ru",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = '49lhgj13fey8miw9.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c8361f9a-0f8f-51a3-a11c-e682d71dc176",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN 5w39rpd815tdhu9yy.ru",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = '5w39rpd815tdhu9yy.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e8661d63-257c-5311-b31c-06a8defed0e2",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN 88ox943apsnuhrua.net",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = '88ox943apsnuhrua.net']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2c604536-42f6-5d0f-ae3a-bd1eac066ecb",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN 9vh4l46l7jwuxb.info",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = '9vh4l46l7jwuxb.info']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--711f9245-aad9-581e-8faa-7dbd027def90",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN adh3c9u695m7pf2gvk.net",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'adh3c9u695m7pf2gvk.net']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ca08a20c-fca4-580f-a50c-6c89975a729f",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN bq31ve6xh4fdhwwq.net",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'bq31ve6xh4fdhwwq.net']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a8ac69d3-ffaf-5a03-a8a9-7a969c17dc87",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN c8jp9z7mpo3wj5ey.biz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'c8jp9z7mpo3wj5ey.biz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4045c044-c7cd-5cb2-b332-85d26bfbd5ff",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN exfil-tunnel.xyz",
+      "description": "DNS - Tunneling - 80 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'exfil-tunnel.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:09:00.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - tunneling"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dd43b4cb-8941-5555-8262-c57c49d1f212",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN fr8lnem1f20560i7be.xyz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'fr8lnem1f20560i7be.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4782cac0-5f9b-5d33-b53f-501d0cd94d2e",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN gzc6yi3clcpwknb2si.net",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'gzc6yi3clcpwknb2si.net']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--91f2bd26-889a-5864-b47b-f5de33b5a36a",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN hqa13j6vvy8sx6cu.xyz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'hqa13j6vvy8sx6cu.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2431d96d-6db7-59ba-a5b1-19a0acf1313c",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN jualxmryk070zgbrs9.ru",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'jualxmryk070zgbrs9.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e9269ea5-ab64-5bd9-8335-2f2885cb610b",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN kxbzef6ph3z50lmi.xyz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'kxbzef6ph3z50lmi.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ce1a696e-0b2e-5df8-9239-6c1b54d540ef",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN mm7q4zldbjto5jvlg.biz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'mm7q4zldbjto5jvlg.biz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b1990541-fff9-5d15-a40a-8e287543efd5",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN n1ktr9blaxtcpy.ru",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'n1ktr9blaxtcpy.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--22aa3b97-f42a-5926-95e5-246ebb41079e",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN oc3udhzinoab76d56a.biz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'oc3udhzinoab76d56a.biz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--73ba9e1c-c0cf-5afa-b89e-112173b96802",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN q9ikyce2kqtklhs6.xyz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'q9ikyce2kqtklhs6.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c2ed1bc6-e4e3-5896-9415-b60b3971d837",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN ru4fkmb8gh9rq9qw4.info",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'ru4fkmb8gh9rq9qw4.info']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e1e37ffb-3914-54df-b40e-1144ef4c66d7",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN si019752aqjtga4ad.biz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'si019752aqjtga4ad.biz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ac30dbc9-5f7b-5a92-843a-18b55316a640",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN w2f4hx02yu7ioky.net",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'w2f4hx02yu7ioky.net']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d0f317de-39ca-56ba-bfac-91edf550dbcd",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN wsw25v88wqtj9ojehh.ru",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'wsw25v88wqtj9ojehh.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--fac52d42-3683-542a-beeb-2926e2acc964",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN xe4chgz2cpviery.info",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'xe4chgz2cpviery.info']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--beea67d2-afd8-50b5-aead-e851f990048f",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN y7eq5wx7kjhgi.biz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'y7eq5wx7kjhgi.biz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2272edec-dfe4-5b6d-9b06-556373638ed4",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN zeo95ltrfaufeitisk.xyz",
+      "description": "DNS - DGA - 36 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'zeo95ltrfaufeitisk.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "dns - dga"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--50f9c8d9-10c6-5bc1-9481-795d62fd8bd8",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "IP 10.10.20.66",
+      "description": "Recon - Port Scan - 300 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '10.10.20.66']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:07:00.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "recon - port scan"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5ff7c7ba-16d7-5f8c-b755-da9b723c75c0",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "IP 198.51.100.20",
+      "description": "HTTP - Suspicious Request - 1 hit(s). files-cdn-dl.xyz",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.51.100.20']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:04:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "http - suspicious request"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--afc2b520-38c1-5ad8-b591-197dad0c3eae",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "IP 203.0.113.50",
+      "description": "Exfiltration, TLS - Missing SNI, TLS - Non-standard Port - 3 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '203.0.113.50']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:15:00.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "exfiltration",
+        "tls - missing sni",
+        "tls - non-standard port"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dfe4cd2b-f52c-56c2-8bc6-a1ecf5cc3261",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "URL http://files-cdn-dl.xyz/payloads/update.ps1",
+      "description": "HTTP - Suspicious Request - 1 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'http://files-cdn-dl.xyz/payloads/update.ps1']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:04:20.000Z",
+      "confidence": 75,
+      "labels": [
+        "high",
+        "http - suspicious request"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1e4f8ed4-34c8-5a82-ba06-70b999ac26ad",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "IP 198.51.100.77",
+      "description": "ICMP Tunneling - 30 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.51.100.77']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-25T16:08:44.000Z",
+      "confidence": 50,
+      "labels": [
+        "medium",
+        "icmp tunneling"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0babdb43-8bfb-5aa2-88dc-f0da105f00bc",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "JA3 cb93c3546cba97d0b377d99e2dd8e069",
+      "description": "TLS - Missing SNI - 1 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[network-traffic:extensions.'tls-ext'.ja3 = 'cb93c3546cba97d0b377d99e2dd8e069']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:15:00.000Z",
+      "confidence": 50,
+      "labels": [
+        "medium",
+        "tls - missing sni"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3dcf2a78-b761-513d-b82d-b9a57568cc24",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN bgpkg65fopk0e.ru",
+      "description": "DNS - Suspicious TLD - 6 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'bgpkg65fopk0e.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:26.000Z",
+      "confidence": 30,
+      "labels": [
+        "low",
+        "dns - suspicious tld"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--be30d36d-09a9-55ce-ac90-f508223d2ab2",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN bpixeg2b5awq.ru",
+      "description": "DNS - Suspicious TLD - 6 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'bpixeg2b5awq.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:26.000Z",
+      "confidence": 30,
+      "labels": [
+        "low",
+        "dns - suspicious tld"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3981a182-eae6-5f77-8a04-d60f8c1ed611",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN dssyqce4hf9qvp.xyz",
+      "description": "DNS - Suspicious TLD - 6 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'dssyqce4hf9qvp.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:26.000Z",
+      "confidence": 30,
+      "labels": [
+        "low",
+        "dns - suspicious tld"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--337a0def-01c3-5695-9a05-8996c83d034b",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN eccdy81ajzth2h.xyz",
+      "description": "DNS - Suspicious TLD - 6 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'eccdy81ajzth2h.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:26.000Z",
+      "confidence": 30,
+      "labels": [
+        "low",
+        "dns - suspicious tld"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--573f0deb-94c4-591d-a23e-9b5a7acccfea",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN files-cdn-dl.xyz",
+      "description": "DNS - Suspicious TLD - 6 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'files-cdn-dl.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:26.000Z",
+      "confidence": 30,
+      "labels": [
+        "low",
+        "dns - suspicious tld"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c39224e1-436a-5196-bc3e-c82e6dc2cc4a",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "DOMAIN y51jvjgy7v9r2j0.ru",
+      "description": "DNS - Suspicious TLD - 6 hit(s).",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'y51jvjgy7v9r2j0.ru']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-14T09:03:26.000Z",
+      "confidence": 30,
+      "labels": [
+        "low",
+        "dns - suspicious tld"
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0d722ab9-363a-5953-8a43-0545a7450baf",
+      "created": "2026-11-25T16:08:44.000Z",
+      "modified": "2026-11-25T16:08:44.000Z",
+      "created_by_ref": "identity--ed1da4c0-0e99-52f3-9623-1931fcee3605",
+      "name": "NTI case DEMO-001",
+      "description": "Network traffic investigation - risk Critical (100/100), 17 findings.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-11-25T16:08:44.000Z",
+      "object_refs": [
+        "indicator--fea89183-d042-5618-b77e-e549fa2a2096",
+        "indicator--3f1ae25c-04e7-57db-9bc3-fb817db9f30e",
+        "indicator--0f8f0845-6581-50c3-8d11-093ea8cab830",
+        "indicator--7bd67257-4bfd-5079-9427-b4a83044d3f2",
+        "indicator--89f5fb7b-0916-519b-b8f3-7c7e47446c2b",
+        "indicator--6cf602c0-46d3-519e-8b37-19dbbba30aca",
+        "indicator--407b66e5-1f6c-580a-b379-52accbbaf94a",
+        "indicator--c8361f9a-0f8f-51a3-a11c-e682d71dc176",
+        "indicator--e8661d63-257c-5311-b31c-06a8defed0e2",
+        "indicator--2c604536-42f6-5d0f-ae3a-bd1eac066ecb",
+        "indicator--711f9245-aad9-581e-8faa-7dbd027def90",
+        "indicator--ca08a20c-fca4-580f-a50c-6c89975a729f",
+        "indicator--a8ac69d3-ffaf-5a03-a8a9-7a969c17dc87",
+        "indicator--4045c044-c7cd-5cb2-b332-85d26bfbd5ff",
+        "indicator--dd43b4cb-8941-5555-8262-c57c49d1f212",
+        "indicator--4782cac0-5f9b-5d33-b53f-501d0cd94d2e",
+        "indicator--91f2bd26-889a-5864-b47b-f5de33b5a36a",
+        "indicator--2431d96d-6db7-59ba-a5b1-19a0acf1313c",
+        "indicator--e9269ea5-ab64-5bd9-8335-2f2885cb610b",
+        "indicator--ce1a696e-0b2e-5df8-9239-6c1b54d540ef",
+        "indicator--b1990541-fff9-5d15-a40a-8e287543efd5",
+        "indicator--22aa3b97-f42a-5926-95e5-246ebb41079e",
+        "indicator--73ba9e1c-c0cf-5afa-b89e-112173b96802",
+        "indicator--c2ed1bc6-e4e3-5896-9415-b60b3971d837",
+        "indicator--e1e37ffb-3914-54df-b40e-1144ef4c66d7",
+        "indicator--ac30dbc9-5f7b-5a92-843a-18b55316a640",
+        "indicator--d0f317de-39ca-56ba-bfac-91edf550dbcd",
+        "indicator--fac52d42-3683-542a-beeb-2926e2acc964",
+        "indicator--beea67d2-afd8-50b5-aead-e851f990048f",
+        "indicator--2272edec-dfe4-5b6d-9b06-556373638ed4",
+        "indicator--50f9c8d9-10c6-5bc1-9481-795d62fd8bd8",
+        "indicator--5ff7c7ba-16d7-5f8c-b755-da9b723c75c0",
+        "indicator--afc2b520-38c1-5ad8-b591-197dad0c3eae",
+        "indicator--dfe4cd2b-f52c-56c2-8bc6-a1ecf5cc3261",
+        "indicator--1e4f8ed4-34c8-5a82-ba06-70b999ac26ad",
+        "indicator--0babdb43-8bfb-5aa2-88dc-f0da105f00bc",
+        "indicator--3dcf2a78-b761-513d-b82d-b9a57568cc24",
+        "indicator--be30d36d-09a9-55ce-ac90-f508223d2ab2",
+        "indicator--3981a182-eae6-5f77-8a04-d60f8c1ed611",
+        "indicator--337a0def-01c3-5695-9a05-8996c83d034b",
+        "indicator--573f0deb-94c4-591d-a23e-9b5a7acccfea",
+        "indicator--c39224e1-436a-5196-bc3e-c82e6dc2cc4a"
+      ]
+    }
+  ],
+  "x_nti_version": "1.1.0"
+}

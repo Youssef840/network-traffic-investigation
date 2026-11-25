@@ -109,7 +109,7 @@ class ThreatIntel:
     ja3: dict = field(default_factory=dict)  # hash -> label
 
     @classmethod
-    def load(cls, directory: str | None) -> "ThreatIntel":
+    def load(cls, directory: str | None) -> ThreatIntel:
         intel = cls()
         if not directory or not os.path.isdir(directory):
             return intel

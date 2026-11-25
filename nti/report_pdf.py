@@ -17,8 +17,7 @@ from reportlab.lib.enums import TA_CENTER, TA_LEFT  # noqa: E402
 from reportlab.lib.pagesizes import A4  # noqa: E402
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet  # noqa: E402
 from reportlab.lib.units import cm  # noqa: E402
-from reportlab.platypus import (Image, KeepTogether, PageBreak, Paragraph,  # noqa: E402
-                                SimpleDocTemplate, Spacer, Table, TableStyle)
+from reportlab.platypus import Image, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle  # noqa: E402
 
 from .utils import defang, fmt_duration, fmt_ts, human_bytes  # noqa: E402
 
@@ -152,7 +151,7 @@ def _chart_severity(by_sev: dict) -> Image | None:
         return None
     fig, ax = plt.subplots(figsize=(5.2, 2.4))
     bars = ax.barh(labels[::-1], values[::-1], color=[SEV_COLORS[s] for s in labels[::-1]], height=0.6)
-    for b, v in zip(bars, values[::-1]):
+    for b, v in zip(bars, values[::-1], strict=False):
         ax.text(b.get_width() + 0.1, b.get_y() + b.get_height() / 2, str(v), va="center", fontsize=8)
     ax.set_title("Findings by severity", fontsize=10, color="#0B1F3A", loc="left")
     _style_axes(ax)
@@ -264,7 +263,7 @@ def _decorate(meta):
 
 # ------------------------------------------------------------- narrative
 def _executive_narrative(res: dict) -> list[str]:
-    meta, risk, findings = res["meta"], res["risk"], res["findings"]
+    risk, findings = res["risk"], res["findings"]
     stats = res["stats"]
     cats = risk["by_category"]
     paras = [
@@ -370,7 +369,7 @@ def build_pdf(res: dict, out_path: str) -> str:
         (f"{tls['sessions']:,}", "TLS sessions"), (str(len(res["iocs"])), "Unique IOCs"),
     ]
     kt = Table([[Paragraph(escape(v), st["kpi_v"]) for v, _ in kpis],
-                [Paragraph(escape(l), st["kpi_l"]) for _, l in kpis]], colWidths=[W / 6] * 6)
+                [Paragraph(escape(lbl), st["kpi_l"]) for _, lbl in kpis]], colWidths=[W / 6] * 6)
     kt.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), LIGHT), ("BOX", (0, 0), (-1, -1), 0.5, GRID),
                             ("LINEAFTER", (0, 0), (-2, -1), 0.5, colors.white),
                             ("TOPPADDING", (0, 0), (-1, 0), 8), ("BOTTOMPADDING", (0, 1), (-1, 1), 8)]))
