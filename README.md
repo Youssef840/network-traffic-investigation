@@ -26,6 +26,9 @@ PCAP ──► Collector (single pass) ──► Detectors (DNS · TLS · Anomal
 
 ## 📄 نموذج تقرير (Sample report)
 
+### 🌐 [افتح اللوحة التفاعلية أونلاين ← youssef840.github.io/network-traffic-investigation](https://youssef840.github.io/network-traffic-investigation/)
+<sub>تقرير حقيقي من الأداة على ملف PCAP **اصطناعي** (عناوين توثيقية ونطاقات وهمية)، يُعاد توليده تلقائياً مع كل تحديث للكود.</sub>
+
 تقرير كامل تم توليده من ملف الـ PCAP التجريبي: **[DEMO-001_report.pdf](reports/DEMO-001_report.pdf)** (13 صفحة)،
 ولوحة HTML تفاعلية: **[DEMO-001_report.html](reports/DEMO-001_report.html)**، وحزمة [STIX 2.1](reports/DEMO-001_stix.json)،
 ومعه [IOCs CSV](reports/DEMO-001_iocs.csv) و[Findings CSV](reports/DEMO-001_findings.csv) و[JSON](reports/DEMO-001_results.json).
